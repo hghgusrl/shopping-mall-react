@@ -3,6 +3,16 @@
   "version": "1.0.0",
   "description": "A React front-end project benchmarking top shopping malls.",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0"
   }
 }
