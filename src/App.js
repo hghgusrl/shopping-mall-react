@@ -12,6 +12,7 @@ function NavBar({ onNavigate }) {
           <a onClick={() => onNavigate('supplement')}>영양제</a>
         </div>
       </div>
+      <button className="reportbtn" onClick={() => onNavigate('report')}>쇼핑몰 보고서</button>
     </nav>
   );
 }
@@ -42,6 +43,8 @@ function App() {
         return <SnackPage onBack={() => setPage('home')} />;
       case 'supplement':
         return <SupplementPage onBack={() => setPage('home')} />;
+      case 'report':
+        return <ReportPage onBack={() => setPage('home')} />;
       default:
         return <Home />;
     }
