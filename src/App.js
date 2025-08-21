@@ -28,11 +28,18 @@ function Hero() {
   );
 }
 
-function CategorySection() {
+function CategorySection({ onSelectFood }) {
   return (
     <section className="categories">
       {categories.map((cat) => (
-        <div className="category-card" key={cat.name}>
+        <div
+          className="category-card"
+          key={cat.name}
+          onClick={() => {
+            if (cat.name === "Food") onSelectFood();
+          }}
+          style={{ cursor: cat.name === "Food" ? "pointer" : "default" }}
+        >
           <h3>{cat.name}</h3>
           <p>{cat.description}</p>
         </div>
@@ -40,6 +47,7 @@ function CategorySection() {
     </section>
   );
 }
+
 
 function FeaturedProducts() {
   return (
@@ -58,12 +66,32 @@ function FeaturedProducts() {
 }
 
 function App() {
+  const [page, setPage] = React.useState("home");
+  const [selectedFood, setSelectedFood] = React.useState(null);
+
   return (
     <div>
-      <Header />
-      <Hero />
-      <CategorySection />
-      <FeaturedProducts />
+      {page === "home" && (
+        <>
+          <Header />
+          <Hero />
+          <CategorySection onSelectFood={() => setPage("foodList")} />
+          <FeaturedProducts />
+        </>
+      )}
+      {page === "foodList" && (
+        <FoodList
+          foods={foods}
+          onSelect={(food) => {
+            setSelectedFood(food);
+            setPage("foodDetail");
+          }}
+          onBack={() => setPage("home")}
+        />
+      )}
+      {page === "foodDetail" && selectedFood && (
+        <FoodDetail food={selectedFood} onBack={() => setPage("foodList")} />
+      )}
     </div>
   );
 }
