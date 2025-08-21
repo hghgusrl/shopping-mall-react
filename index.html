@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shopping Mall Benchmark</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+      header { background: #222; color: #fff; padding: 1rem; text-align: center; }
+      .mall-list { display: flex; flex-wrap: wrap; justify-content: center; padding: 1rem; }
+      .mall-card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin: 0.5rem;
+        padding: 1rem;
+        width: 200px;
+        box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+      }
+      .mall-card h2 { font-size: 1.2rem; margin-top: 0; }
+      .mall-card ul { padding-left: 1.2rem; }
+    </style>
+  </head>
+  <body>
+    <header><h1>Shopping Mall Benchmark</h1></header>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel" src="./src/App.js"></script>
+    <script type="text/babel" src="./src/index.js"></script>
+  </body>
+</html>

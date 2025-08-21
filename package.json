@@ -1,0 +1,8 @@
+{
+  "name": "shopping-mall-react",
+  "version": "1.0.0",
+  "description": "A React front-end project benchmarking top shopping malls.",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  }
+}
