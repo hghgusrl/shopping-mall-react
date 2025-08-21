@@ -4,25 +4,183 @@
     <meta charset="UTF-8" />
     <title>Pet Shop</title>
     <style>
-      body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-      .navbar { background: #ff6b6b; padding: 1rem; color: #fff; }
-      .dropdown { position: relative; display: inline-block; }
-      .dropbtn { background: #ff6b6b; color: #fff; border: none; cursor: pointer; font-size: 16px; }
-      .dropdown-content { display: none; position: absolute; background: #fff; min-width: 120px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); }
-      .dropdown-content a { color: #000; padding: 12px 16px; text-decoration: none; display: block; }
-      .dropdown-content a:hover { background-color: #f1f1f1; }
-      .dropdown:hover .dropdown-content { display: block; }
-      .dropdown:hover .dropbtn { background-color: #ff5252; }
-      .hero { background: #ffeaa7; padding: 2rem 1rem; text-align: center; }
-      .category-page { padding: 1rem; }
-      .product-grid { display: flex; flex-wrap: wrap; justify-content: center; }
-      .product-card { border: 1px solid #ccc; border-radius: 8px; margin: 0.5rem; padding: 1rem; width: 150px; text-align: center; box-shadow: 2px 2px 6px rgba(0,0,0,0.1); }
-      .product-card img { width: 100%; height: auto; }
-      .reportbtn { background: #ff6b6b; color: #fff; border: none; cursor: pointer; font-size: 16px; margin-left: 1rem; }
-      .reportbtn:hover { background-color: #ff5252; }
-      .report-page table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-      .report-page th, .report-page td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-      .report-page th { background: #f8f8f8; }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: #0074e9;
+        padding: 0.5rem 1rem;
+        color: #fff;
+      }
+
+      .logo {
+        font-weight: bold;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .search-bar {
+        flex: 1;
+        display: flex;
+      }
+
+      .search-bar input {
+        flex: 1;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-right: none;
+        border-radius: 4px 0 0 4px;
+      }
+
+      .search-bar .searchbtn {
+        padding: 0.5rem 1rem;
+        border: none;
+        background: #ff6b6b;
+        color: #fff;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropbtn {
+        background: #0074e9;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background: #fff;
+        min-width: 120px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: #000;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover .dropbtn {
+        background-color: #005bb5;
+      }
+
+      .reportbtn {
+        background: #ff6b6b;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-left: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+      }
+
+      .reportbtn:hover {
+        background-color: #ff5252;
+      }
+
+      .hero {
+        background-image: url('https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1350&q=80');
+        background-size: cover;
+        background-position: center;
+        padding: 4rem 1rem;
+        text-align: center;
+        color: #fff;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .category-page {
+        padding: 1rem;
+      }
+
+      .category-page button {
+        background: #0074e9;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 1rem;
+      }
+
+      .category-page button:hover {
+        background: #005bb5;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .product-card {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .product-card img {
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 0.5rem;
+      }
+
+      .report-page table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+
+      .report-page th,
+      .report-page td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+
+      .report-page th {
+        background: #f8f8f8;
+      }
     </style>
   </head>
   <body>
