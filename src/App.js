@@ -1,8 +1,9 @@
 function NavBar({ onNavigate }) {
   return (
     <nav className="navbar">
+      <div className="logo" onClick={() => onNavigate('home')}>PetShop</div>
       <div className="dropdown">
-        <button className="dropbtn">반려동물 용품</button>
+        <button className="dropbtn">카테고리</button>
         <div className="dropdown-content">
           <a onClick={() => onNavigate('bath')}>목욕</a>
           <a onClick={() => onNavigate('toilet')}>배변</a>
@@ -11,6 +12,10 @@ function NavBar({ onNavigate }) {
           <a onClick={() => onNavigate('snack')}>간식</a>
           <a onClick={() => onNavigate('supplement')}>영양제</a>
         </div>
+      </div>
+      <div className="search-bar">
+        <input type="text" placeholder="찾고 있는 상품을 검색해보세요" />
+        <button className="searchbtn">검색</button>
       </div>
       <button className="reportbtn" onClick={() => onNavigate('report')}>쇼핑몰 보고서</button>
     </nav>
