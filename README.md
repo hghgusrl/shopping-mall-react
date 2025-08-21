@@ -1,10 +1,10 @@
 # Shopping Mall React
 
-A minimal React front-end demonstrating features inspired by five well-known online shopping malls: Amazon, eBay, Walmart, Alibaba, and Rakuten.
+A minimal React front-end showing the main page of a fictional pet supplies store, **PawPals Pet Shop**.
 
 ## Getting started
 
-Open `index.html` in a web browser with internet access. The page uses CDN links to load React and renders a list of shopping malls with notable features.
+Open `index.html` in a web browser with internet access. The page uses CDN links to load React and renders a simple landing page with product categories and featured items for a pet shop.
 
 ## Development
 

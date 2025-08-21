@@ -1,52 +1,69 @@
-const malls = [
-  {
-    name: "Amazon",
-    features: ["Massive product selection", "Prime shipping", "Personalized recommendations"],
-  },
-  {
-    name: "eBay",
-    features: ["Auction-style listings", "Buyer protection", "Global marketplace"],
-  },
-  {
-    name: "Walmart",
-    features: ["Everyday low prices", "Store pickup", "Grocery delivery"],
-  },
-  {
-    name: "Alibaba",
-    features: ["Wholesale pricing", "International trade", "Supplier directory"],
-  },
-  {
-    name: "Rakuten",
-    features: ["Cashback rewards", "Marketplace diversity", "Member points"],
-  },
+const categories = [
+  { name: "Food", description: "Healthy meals and snacks" },
+  { name: "Toys", description: "Fun for hours" },
+  { name: "Grooming", description: "Keep them looking great" },
+  { name: "Accessories", description: "Collars, leashes and more" },
 ];
 
-// Aggregate unique features from all benchmarked malls to inspire our own shop
-const myMall = {
-  name: "MyMall",
-  features: Array.from(new Set(malls.flatMap((m) => m.features))),
-};
+const featured = [
+  { name: "Chew Toy", price: "$9.99" },
+  { name: "Organic Dog Food", price: "$24.99" },
+  { name: "Cozy Bed", price: "$49.99" },
+];
 
-function ShoppingMall({ name, features }) {
+function Header() {
   return (
-    <div className="mall-card">
-      <h2>{name}</h2>
-      <ul>
-        {features.map((f, idx) => (
-          <li key={idx}>{f}</li>
+    <header className="site-header">
+      <h1>PawPals Pet Shop</h1>
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="hero">
+      <h2>Everything Your Dog Needs</h2>
+      <p>Quality toys, tasty treats and comfy beds.</p>
+    </section>
+  );
+}
+
+function CategorySection() {
+  return (
+    <section className="categories">
+      {categories.map((cat) => (
+        <div className="category-card" key={cat.name}>
+          <h3>{cat.name}</h3>
+          <p>{cat.description}</p>
+        </div>
+      ))}
+    </section>
+  );
+}
+
+function FeaturedProducts() {
+  return (
+    <section className="featured">
+      <h2>Featured Products</h2>
+      <div className="product-grid">
+        {featured.map((prod) => (
+          <div className="product-card" key={prod.name}>
+            <h4>{prod.name}</h4>
+            <span>{prod.price}</span>
+          </div>
         ))}
-      </ul>
-    </div>
+      </div>
+    </section>
   );
 }
 
 function App() {
   return (
-    <div className="mall-list">
-      {malls.map((mall) => (
-        <ShoppingMall key={mall.name} {...mall} />
-      ))}
-      <ShoppingMall key={myMall.name} {...myMall} />
+    <div>
+      <Header />
+      <Hero />
+      <CategorySection />
+      <FeaturedProducts />
     </div>
   );
 }
