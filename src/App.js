@@ -21,12 +21,47 @@ function NavBar({ onNavigate }) {
   );
 }
 
+function CategoryCarousel({ title, items }) {
+  const [start, setStart] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setStart((prev) => (prev + 5) % items.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [items.length]);
+
+  const visibleItems = Array.from({ length: 5 }, (_, i) => items[(start + i) % items.length]);
+
+  return (
+    <section className="category-page">
+      <h2>{title}</h2>
+      <div className="product-grid">
+        {visibleItems.map((item) => (
+          <div className="product-card" key={item.id}>
+            <img src={item.image} alt={item.name} />
+            <h4>{item.name}</h4>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Home() {
   return (
-    <section className="hero">
-      <h2>우리 반려동물을 위한 최고의 선택</h2>
-      <p>필요한 모든 용품을 한 곳에서 만나보세요.</p>
-    </section>
+    <div>
+      <section className="hero">
+        <h2>우리 반려동물을 위한 최고의 선택</h2>
+        <p>필요한 모든 용품을 한 곳에서 만나보세요.</p>
+      </section>
+      <CategoryCarousel title="목욕 용품" items={bathItems} />
+      <CategoryCarousel title="배변 용품" items={toiletItems} />
+      <CategoryCarousel title="산책 용품" items={walkItems} />
+      <CategoryCarousel title="놀이 용품" items={playItems} />
+      <CategoryCarousel title="간식" items={snackItems} />
+      <CategoryCarousel title="영양제" items={supplementItems} />
+    </div>
   );
 }
 
