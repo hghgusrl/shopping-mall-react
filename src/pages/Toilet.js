@@ -1,16 +1,34 @@
 const toiletItems = [
-  // TODO: Replace with backend API data
   { id: 1, name: "모래 화장실", image: "https://via.placeholder.com/150?text=Litter" },
   { id: 2, name: "배변 봉투", image: "https://via.placeholder.com/150?text=Bags" },
+  { id: 3, name: "탈취제", image: "https://via.placeholder.com/150?text=Deodorizer" },
+  { id: 4, name: "배변 패드", image: "https://via.placeholder.com/150?text=Pad" },
+  { id: 5, name: "청소 스프레이", image: "https://via.placeholder.com/150?text=Spray" },
+  { id: 6, name: "고양이 모래", image: "https://via.placeholder.com/150?text=Sand" },
+  { id: 7, name: "휴지통", image: "https://via.placeholder.com/150?text=Trash" },
+  { id: 8, name: "화장실 매트", image: "https://via.placeholder.com/150?text=Mat" },
+  { id: 9, name: "청소 브러쉬", image: "https://via.placeholder.com/150?text=Brush" },
+  { id: 10, name: "자동 화장실", image: "https://via.placeholder.com/150?text=Auto" },
 ];
 
 function ToiletPage({ onBack }) {
+  const [start, setStart] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setStart((prev) => (prev + 5) % toiletItems.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const visibleItems = Array.from({ length: 5 }, (_, i) => toiletItems[(start + i) % toiletItems.length]);
+
   return (
     <div className="category-page">
       <button onClick={onBack}>뒤로가기</button>
       <h2>배변 용품</h2>
       <div className="product-grid">
-        {toiletItems.map((item) => (
+        {visibleItems.map((item) => (
           <div className="product-card" key={item.id}>
             <img src={item.image} alt={item.name} />
             <h4>{item.name}</h4>
