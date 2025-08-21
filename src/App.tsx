@@ -1,4 +1,17 @@
-function NavBar({ onNavigate }) {
+import React, { useEffect, useState } from 'react';
+import { BathPage, bathItems } from './pages/Bath';
+import { ToiletPage, toiletItems } from './pages/Toilet';
+import { WalkPage, walkItems } from './pages/Walk';
+import { PlayPage, playItems } from './pages/Play';
+import { SnackPage, snackItems } from './pages/Snack';
+import { SupplementPage, supplementItems } from './pages/Supplement';
+import { Product } from './types';
+
+interface NavBarProps {
+  onNavigate: (page: Page) => void;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
   return (
     <nav className="navbar">
       <div className="logo" onClick={() => onNavigate('home')}>PetShop</div>
@@ -19,18 +32,24 @@ function NavBar({ onNavigate }) {
       </div>
     </nav>
   );
+};
+
+interface CategoryCarouselProps {
+  title: string;
+  items: Product[];
+  onMore: () => void;
 }
 
-function CategoryCarousel({ title, items, onMore }) {
-  const slides = [];
+const CategoryCarousel: React.FC<CategoryCarouselProps> = ({ title, items, onMore }) => {
+  const slides: Product[][] = [];
   for (let i = 0; i < items.length; i += 2) {
     slides.push(items.slice(i, i + 2));
   }
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
+      setIndex(prev => (prev + 1) % slides.length);
     }, 3000);
     return () => clearInterval(interval);
   }, [slides.length]);
@@ -42,13 +61,10 @@ function CategoryCarousel({ title, items, onMore }) {
         <button className="more-btn" onClick={onMore}>더보기</button>
       </div>
       <div className="carousel-container">
-        <div
-          className="carousel-track"
-          style={{ transform: `translateX(-${index * 100}%)` }}
-        >
+        <div className="carousel-track" style={{ transform: `translateX(-${index * 100}%)` }}>
           {slides.map((slide, idx) => (
             <div className="slide" key={idx}>
-              {slide.map((item) => (
+              {slide.map(item => (
                 <div className="product-card" key={item.id}>
                   <img src={item.image} alt={item.name} />
                   <h4>{item.name}</h4>
@@ -60,9 +76,15 @@ function CategoryCarousel({ title, items, onMore }) {
       </div>
     </section>
   );
+};
+
+type Page = 'home' | 'bath' | 'toilet' | 'walk' | 'play' | 'snack' | 'supplement';
+
+interface HomeProps {
+  onNavigate: (page: Page) => void;
 }
 
-function Home({ onNavigate }) {
+const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   return (
     <div>
       <section className="hero">
@@ -77,10 +99,10 @@ function Home({ onNavigate }) {
       <CategoryCarousel title="영양제" items={supplementItems} onMore={() => onNavigate('supplement')} />
     </div>
   );
-}
+};
 
-function App() {
-  const [page, setPage] = React.useState('home');
+const App: React.FC = () => {
+  const [page, setPage] = useState<Page>('home');
 
   const renderPage = () => {
     switch (page) {
@@ -107,6 +129,6 @@ function App() {
       {renderPage()}
     </div>
   );
-}
+};
 
-window.App = App;
+export default App;
