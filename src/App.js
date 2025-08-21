@@ -21,6 +21,12 @@ const malls = [
   },
 ];
 
+// Aggregate unique features from all benchmarked malls to inspire our own shop
+const myMall = {
+  name: "MyMall",
+  features: Array.from(new Set(malls.flatMap((m) => m.features))),
+};
+
 function ShoppingMall({ name, features }) {
   return (
     <div className="mall-card">
@@ -40,6 +46,7 @@ function App() {
       {malls.map((mall) => (
         <ShoppingMall key={mall.name} {...mall} />
       ))}
+      <ShoppingMall key={myMall.name} {...myMall} />
     </div>
   );
 }
