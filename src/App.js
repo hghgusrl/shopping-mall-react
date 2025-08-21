@@ -1,97 +1,56 @@
-const categories = [
-  { name: "Food", description: "Healthy meals and snacks" },
-  { name: "Toys", description: "Fun for hours" },
-  { name: "Grooming", description: "Keep them looking great" },
-  { name: "Accessories", description: "Collars, leashes and more" },
-];
-
-const featured = [
-  { name: "Chew Toy", price: "$9.99" },
-  { name: "Organic Dog Food", price: "$24.99" },
-  { name: "Cozy Bed", price: "$49.99" },
-];
-
-function Header() {
+function NavBar({ onNavigate }) {
   return (
-    <header className="site-header">
-      <h1>PawPals Pet Shop</h1>
-    </header>
+    <nav className="navbar">
+      <div className="dropdown">
+        <button className="dropbtn">반려동물 용품</button>
+        <div className="dropdown-content">
+          <a onClick={() => onNavigate('bath')}>목욕</a>
+          <a onClick={() => onNavigate('toilet')}>배변</a>
+          <a onClick={() => onNavigate('walk')}>산책</a>
+          <a onClick={() => onNavigate('play')}>놀이</a>
+          <a onClick={() => onNavigate('snack')}>간식</a>
+          <a onClick={() => onNavigate('supplement')}>영양제</a>
+        </div>
+      </div>
+    </nav>
   );
 }
 
-function Hero() {
+function Home() {
   return (
     <section className="hero">
-      <h2>Everything Your Dog Needs</h2>
-      <p>Quality toys, tasty treats and comfy beds.</p>
-    </section>
-  );
-}
-
-function CategorySection({ onSelectFood }) {
-  return (
-    <section className="categories">
-      {categories.map((cat) => (
-        <div
-          className="category-card"
-          key={cat.name}
-          onClick={() => {
-            if (cat.name === "Food") onSelectFood();
-          }}
-          style={{ cursor: cat.name === "Food" ? "pointer" : "default" }}
-        >
-          <h3>{cat.name}</h3>
-          <p>{cat.description}</p>
-        </div>
-      ))}
-    </section>
-  );
-}
-
-
-function FeaturedProducts() {
-  return (
-    <section className="featured">
-      <h2>Featured Products</h2>
-      <div className="product-grid">
-        {featured.map((prod) => (
-          <div className="product-card" key={prod.name}>
-            <h4>{prod.name}</h4>
-            <span>{prod.price}</span>
-          </div>
-        ))}
-      </div>
+      <h2>우리 반려동물을 위한 최고의 선택</h2>
+      <p>필요한 모든 용품을 한 곳에서 만나보세요.</p>
     </section>
   );
 }
 
 function App() {
-  const [page, setPage] = React.useState("home");
-  const [selectedFood, setSelectedFood] = React.useState(null);
+  const [page, setPage] = React.useState('home');
+
+  const renderPage = () => {
+    switch (page) {
+      case 'bath':
+        return <BathPage onBack={() => setPage('home')} />;
+      case 'toilet':
+        return <ToiletPage onBack={() => setPage('home')} />;
+      case 'walk':
+        return <WalkPage onBack={() => setPage('home')} />;
+      case 'play':
+        return <PlayPage onBack={() => setPage('home')} />;
+      case 'snack':
+        return <SnackPage onBack={() => setPage('home')} />;
+      case 'supplement':
+        return <SupplementPage onBack={() => setPage('home')} />;
+      default:
+        return <Home />;
+    }
+  };
 
   return (
     <div>
-      {page === "home" && (
-        <>
-          <Header />
-          <Hero />
-          <CategorySection onSelectFood={() => setPage("foodList")} />
-          <FeaturedProducts />
-        </>
-      )}
-      {page === "foodList" && (
-        <FoodList
-          foods={foods}
-          onSelect={(food) => {
-            setSelectedFood(food);
-            setPage("foodDetail");
-          }}
-          onBack={() => setPage("home")}
-        />
-      )}
-      {page === "foodDetail" && selectedFood && (
-        <FoodDetail food={selectedFood} onBack={() => setPage("foodList")} />
-      )}
+      <NavBar onNavigate={setPage} />
+      {renderPage()}
     </div>
   );
 }

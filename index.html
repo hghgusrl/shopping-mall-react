@@ -1,42 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>PawPals Pet Shop</title>
+    <title>Pet Shop</title>
     <style>
       body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-      .site-header { background: #ff6b6b; color: #fff; padding: 1rem; text-align: center; }
+      .navbar { background: #ff6b6b; padding: 1rem; color: #fff; }
+      .dropdown { position: relative; display: inline-block; }
+      .dropbtn { background: #ff6b6b; color: #fff; border: none; cursor: pointer; font-size: 16px; }
+      .dropdown-content { display: none; position: absolute; background: #fff; min-width: 120px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); }
+      .dropdown-content a { color: #000; padding: 12px 16px; text-decoration: none; display: block; }
+      .dropdown-content a:hover { background-color: #f1f1f1; }
+      .dropdown:hover .dropdown-content { display: block; }
+      .dropdown:hover .dropbtn { background-color: #ff5252; }
       .hero { background: #ffeaa7; padding: 2rem 1rem; text-align: center; }
-      .categories { display: flex; flex-wrap: wrap; justify-content: center; padding: 1rem; }
-      .category-card {
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        margin: 0.5rem;
-        padding: 1rem;
-        width: 200px;
-        text-align: center;
-        box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-      }
-      .featured { padding: 1rem; }
+      .category-page { padding: 1rem; }
       .product-grid { display: flex; flex-wrap: wrap; justify-content: center; }
-      .product-card {
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        margin: 0.5rem;
-        padding: 1rem;
-        width: 150px;
-        text-align: center;
-        box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-      }
+      .product-card { border: 1px solid #ccc; border-radius: 8px; margin: 0.5rem; padding: 1rem; width: 150px; text-align: center; box-shadow: 2px 2px 6px rgba(0,0,0,0.1); }
+      .product-card img { width: 100%; height: auto; }
     </style>
   </head>
   <body>
-    <header class="site-header"><h1>PawPals Pet Shop</h1></header>
     <div id="root"></div>
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script type="text/babel" src="./src/food.js"></script>
+    <script type="text/babel" src="./src/pages/Bath.js"></script>
+    <script type="text/babel" src="./src/pages/Toilet.js"></script>
+    <script type="text/babel" src="./src/pages/Walk.js"></script>
+    <script type="text/babel" src="./src/pages/Play.js"></script>
+    <script type="text/babel" src="./src/pages/Snack.js"></script>
+    <script type="text/babel" src="./src/pages/Supplement.js"></script>
     <script type="text/babel" src="./src/App.js"></script>
     <script type="text/babel" src="./src/index.js"></script>
   </body>
