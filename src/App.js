@@ -17,7 +17,6 @@ function NavBar({ onNavigate }) {
         <input type="text" placeholder="찾고 있는 상품을 검색해보세요" />
         <button className="searchbtn">검색</button>
       </div>
-      <button className="reportbtn" onClick={() => onNavigate('report')}>쇼핑몰 보고서</button>
     </nav>
   );
 }
@@ -48,8 +47,6 @@ function App() {
         return <SnackPage onBack={() => setPage('home')} />;
       case 'supplement':
         return <SupplementPage onBack={() => setPage('home')} />;
-      case 'report':
-        return <ReportPage onBack={() => setPage('home')} />;
       default:
         return <Home />;
     }
