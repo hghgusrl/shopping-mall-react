@@ -27,6 +27,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
         </div>
       </div>
       <div className="search-bar">
+        {/* TODO: 백엔드 검색 API와 연동하여 검색 기능 구현 */}
         <input type="text" placeholder="찾고 있는 상품을 검색해보세요" />
         <button className="searchbtn">검색</button>
       </div>

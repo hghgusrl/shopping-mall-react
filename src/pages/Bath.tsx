@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Product } from '../types';
 
+// TODO: 백엔드에서 목욕 용품 데이터를 가져오도록 수정
 export const bathItems: Product[] = [
   { id: 1, name: '샴푸', image: 'https://via.placeholder.com/150?text=Shampoo' },
   { id: 2, name: '수건', image: 'https://via.placeholder.com/150?text=Towel' },

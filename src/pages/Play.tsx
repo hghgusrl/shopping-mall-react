@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Product } from '../types';
 
+// TODO: 백엔드에서 놀이 용품 데이터를 가져오도록 수정
 export const playItems: Product[] = [
   { id: 1, name: '공', image: 'https://via.placeholder.com/150?text=Ball' },
   { id: 2, name: '로프 장난감', image: 'https://via.placeholder.com/150?text=Rope' },

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Product } from '../types';
 
+// TODO: 백엔드에서 영양제 데이터를 가져오도록 수정
 export const supplementItems: Product[] = [
   { id: 1, name: '비타민', image: 'https://via.placeholder.com/150?text=Vitamin' },
   { id: 2, name: '관절 영양제', image: 'https://via.placeholder.com/150?text=Joint' },
