@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Product } from '../types';
 
+// TODO: 백엔드에서 배변 용품 데이터를 가져오도록 수정
 export const toiletItems: Product[] = [
   { id: 1, name: '모래 화장실', image: 'https://via.placeholder.com/150?text=Litter' },
   { id: 2, name: '배변 봉투', image: 'https://via.placeholder.com/150?text=Bags' },

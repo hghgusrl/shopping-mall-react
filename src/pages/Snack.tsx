@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Product } from '../types';
 
+// TODO: 백엔드에서 간식 데이터를 가져오도록 수정
 export const snackItems: Product[] = [
   { id: 1, name: '비스킷', image: 'https://via.placeholder.com/150?text=Biscuit' },
   { id: 2, name: '육포', image: 'https://via.placeholder.com/150?text=Jerky' },
